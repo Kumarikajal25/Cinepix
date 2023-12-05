@@ -1,6 +1,7 @@
 @import "../../mixins.scss";
 .carousel {
     margin-bottom: 50px;
+    
     &.no-transition{
         scroll-behavior:smooth;
        
@@ -125,12 +126,17 @@
                    
                         &:hover {
                            +.textBlock {
-                            position: relative;
-                      padding-top: 2px;
-                      
+                       
+                     
+                        position: relative;
+                        top: 6px;
+                        gap: 1px;
                         }
+
+                       
                       opacity: 0.5;
-                         transform: scale(1.06);
+                         transform: scale(1.05);
+                      
                         }
                 }
                 
@@ -172,8 +178,10 @@
                 }
             }
             .textBlock {
+              
                 color: white;
-                display: flexbox;
+                display: flex;
+                gap: 6px;
                 flex-direction: column;
              
                 .title {

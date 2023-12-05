@@ -1,5 +1,6 @@
+
 .carouselSection {
-    position: relative;
+    box-sizing: border-box;
     margin-bottom: 70px;
     & > .contentWrapper {
         display: flex;
@@ -12,4 +13,5 @@
         color: white;
         font-weight: normal;
     }
+  
 }

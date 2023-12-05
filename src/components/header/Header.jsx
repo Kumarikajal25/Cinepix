@@ -15,6 +15,7 @@ const Header = () => {
     const [mobileMenu, setMobileMenu] = useState(false);
     const [query, setQuery] = useState("");
     const [showSearch, setShowSearch] = useState("");
+    const [showIcon, setShowIcon] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -49,6 +50,11 @@ const Header = () => {
                 setShowSearch(false);
             }, 1000);
         }
+        if(document.getElementById("input").value!=0){
+            setShowIcon(true);
+          }else{
+            setShowIcon(false);
+          }
     };
 
     const openSearch = () => {
@@ -90,18 +96,50 @@ const Header = () => {
                         Movies
                     </li>
                     <li
-                        className="menuItem"
+                        className="menuItem" id={showSearch ?"expand"
+                      :""} 
                         onClick={() => navigationHandler("tv")}
                     >
                         TV Shows
                     </li>
-                    <li className="menuItem">
-                        <HiOutlineSearch onClick={openSearch} />
-                    </li>
+                    {showSearch &&
+                  (
+                  
+              <div className="searchBar"
+               id={showSearch ?"expandable"
+                      :""}>
+              <HiOutlineSearch  onClick={() => setShowSearch(false)} />
+                  
+                      <div className="searchInput">
+                          <input
+                              type="text"
+                              placeholder="Tittle, people, generes"
+                             id="input"
+                              onChange={(e) => setQuery(e.target.value)}
+                              onKeyUp={searchQueryHandler}
+                          />
+                          {showIcon && (
+                            <VscChromeClose  
+                         onClick={()=>{
+                            document.getElementById("input").value="";
+                            setShowIcon(false);
+                         }}
+                           
+                          />
+                          )}
+                          
+                      </div>
+                 
+              </div>
+          )}  
+                   
+                    <li className="menuItem" id={showSearch?"hide":" "}>
+                      <HiOutlineSearch onClick={openSearch} />
+                  
+                  </li>
                 </ul>
 
                 <div className="mobileMenuItems">
-                    <HiOutlineSearch onClick={openSearch} />
                     {mobileMenu ? (
                         <VscChromeClose onClick={() => setMobileMenu(false)} />
                     ) : (
@@ -109,7 +147,7 @@ const Header = () => {
                     )}
                 </div>
             </ContentWrapper>
-            {showSearch && (
+            {/* {showSearch && (
                 <div className="searchBar">
                     <ContentWrapper>
                         <div className="searchInput">
@@ -125,7 +163,7 @@ const Header = () => {
                         </div>
                     </ContentWrapper>
                 </div>
-            )}
+            )} */}
         </header>
     );
 };

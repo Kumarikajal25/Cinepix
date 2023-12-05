@@ -62,6 +62,7 @@
     .textBlock {
         color: white;
         display: flex;
+        gap: 4px;
         flex-direction: column;
         .title {
             font-size: 16px;
@@ -80,11 +81,15 @@
     &:hover {
         .posterBlock {
             opacity: 0.5;
-            transform: scale(1.06);
+            transform: scale(1.08);
+          
+
         }
         .textBlock{
             position: relative;
-            padding-top: 2px;
+          
+            top: 6px;
+            gap: 3px;
         }
     }
 }
